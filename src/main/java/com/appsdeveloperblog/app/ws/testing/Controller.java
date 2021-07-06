@@ -14,6 +14,7 @@ public class Controller {
     private static Logger logger = LoggerFactory.getLogger(Controller.class);
     LDClient ldClient = new LDClient("sdk-9e47d71f-dc78-48ba-9e3c-4f6635bbd253");
 
+    /*
     @GetMapping
     public String hello(){
         LDUser user = new LDUser("user@test.com");
@@ -25,6 +26,20 @@ public class Controller {
         logger.info("Lowercase");
         return "hello";
     }
+    */
 
+    @GetMapping
+    public String getString(){
+        LDUser user = new LDUser("user@test.com");
+        logger.debug("you should not see this");
+        String s = ldClient.stringVariation("multivariate-string-flag-test-andrew-qi-tang", user, "");
+        if(s.equals("")){
+            logger.error("Error");
+        }
+        else {
+            logger.info("It works");
+        }
+        return s;
+    }
 }
 
