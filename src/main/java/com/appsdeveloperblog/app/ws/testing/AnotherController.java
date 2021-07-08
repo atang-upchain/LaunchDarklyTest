@@ -11,11 +11,10 @@ import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 
 @RestController
-@RequestMapping("test")
-public class Controller {
+@RequestMapping("anothertest")
+public class AnotherController {
 
-    private static Logger logger = (Logger) LoggerFactory.getLogger(Controller.class);
-    ch.qos.logback.classic.Logger rootLogger = (ch.qos.logback.classic.Logger)LoggerFactory.getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+    private static Logger logger = (Logger) LoggerFactory.getLogger(AnotherController.class);
     LDClient ldClient = new LDClient("sdk-9e47d71f-dc78-48ba-9e3c-4f6635bbd253");
 
     /*
@@ -34,18 +33,9 @@ public class Controller {
 
     @GetMapping
     public String getString(){
-        LDUser user = new LDUser("user@test.com");
-        int toggleLevel = ldClient.intVariation("logger-level-toggle-test-andrew-qi-tang", user, Level.DEBUG.toInt());
-        rootLogger.setLevel(Level.INFO);
-        logger.debug("");
-        String s = ldClient.stringVariation("multivariate-string-flag-test-andrew-qi-tang", user, "");
-        if(s.equals("")){
-            logger.error("Error");
-        }
-        else {
-            logger.info("It works");
-        }
-        return s;
+        logger.debug("you should not see this");
+        logger.info("this is an info");
+        return "ran another controller";
     }
 }
 
