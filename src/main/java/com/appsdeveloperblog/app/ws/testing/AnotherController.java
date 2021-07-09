@@ -4,9 +4,7 @@ package com.appsdeveloperblog.app.ws.testing;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.launchdarkly.sdk.*;
 import com.launchdarkly.sdk.server.*;
-import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 
