@@ -16,19 +16,21 @@ public class Controller {
 
     private static Logger logger = (Logger) LoggerFactory.getLogger(Controller.class);
     LDClient ldClient = new LDClient("sdk-9e47d71f-dc78-48ba-9e3c-4f6635bbd253");
-
     @GetMapping
     public String getString(){
         LDUser user = new LDUser("user@test.com");
-        logger.error("this is a error log");
+        ldClient.getFlagTracker().addFlagValueChangeListener("logger-level-toggle-test-andrew-qi-tang", user, event -> {
+            System.out.println("*********************Flag " + event.getKey() + " for user " + user.getKey() + " has changed from " + event.getOldValue() + " to " + event.getNewValue());
+        });
+       /* logger.error("this is a error log");
         String s = ldClient.stringVariation("multivariate-string-flag-test-andrew-qi-tang", user, "");
         if(s.equals("")){
             logger.error("Error");
         }
         else {
             logger.info("It works");
-        }
-        return s;
+        }*/
+        return "testing";
     }
 }
 
